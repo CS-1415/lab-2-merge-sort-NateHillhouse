@@ -8,19 +8,27 @@ Nathan Hillhouse
 Lab 2: Merge Sort
 */
 
-
+Console.Clear();
 int[] array = GenerateArray();
 
 System.Diagnostics.Debug.Assert(Enumerable.SequenceEqual( CombineSortedArrays(new int[]{1, 3, 5}, new int[]{-5, 3, 6, 7}), new int[]{-5, 1, 3, 3, 5, 6, 7}));
-
 System.Diagnostics.Debug.Assert(Enumerable.SequenceEqual( CombineSortedArrays(new int[]{-5, 2, 5, 8, 10}, new int[]{1, 2, 5}), new int[]{-5, 1, 2, 2, 5, 5, 8, 10}));
 
-foreach (int item in array) Console.Write(item + ", ");
+Console.Write("Initial array: ");
+WriteArray(array);
 Console.WriteLine();
 array = MergeSort(array);
-foreach (int item in array) Console.Write(item + ", ");
+Console.Write("Sorted Array: ");
+WriteArray(array);
 
-
+static void WriteArray(int[] array)
+{
+    for (int item = 0; item < array.Length; item++) 
+    {
+        Console.Write(array[item]);
+        if (!(item >= array.Length-1)) Console.Write(", ");
+    }
+}
 static int[] MergeSort(int[] array)
 {
     int size = array.Length;
